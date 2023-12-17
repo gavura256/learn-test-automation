@@ -93,12 +93,6 @@ pmd {
     ruleSetFiles = files("src/main/resources/analyzers/pmdrules.xml")
 }
 
-checkstyleMain.dependsOn(classes)
-checkstyleTest.dependsOn(testClasses)
-pmdMain.dependsOn(classes)
-pmdTest.dependsOn(testClasses)
-test.dependsOn(pmdMain, pmdTest, checkstyleMain, checkstyleTest)
-
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
@@ -144,3 +138,9 @@ def setRPProperties() {
     properties.setProperty("rp.project", projectName)
     file(filePath).withWriter { properties.store(it, null) }
 }
+
+checkstyleMain.dependsOn(classes)
+checkstyleTest.dependsOn(checkstyleMain)
+pmdMain.dependsOn(checkstyleTest)
+pmdTest.dependsOn(pmdMain)
+test.dependsOn(pmdMain, pmdTest, checkstyleMain, checkstyleTest)
