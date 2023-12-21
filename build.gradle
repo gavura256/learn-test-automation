@@ -14,56 +14,54 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    lombokVersion = '1.18.30'
-    slf4jVersion = '1.7.36'
-    logbackClassicVersion = '1.4.11'
-    assertjCoreVersion = '3.24.2'
-    jacksonVersion = '2.15.2'
-    loggerJavaLogbackVersion = '5.1.6'
-    commonCodecVersion = '1.16.0'
-    seleniumJavaVersion = '4.15.0'
-    cucumberVersion = '7.14.0'
-    agentJavaCucumberVersion = '5.2.0'
-    agentJavaJUnit5Version = '5.1.10'
-    junitPlatformSuite = '1.10.0'
-    cucumberJunitPlatformEngine = '7.13.0'
-    junitJupiterApi = '5.9.2'
-    cucumberGuiceVersion = '7.14.0'
-    guiceVersion = '7.0.0'
-    restAssuredVersion = '5.3.2'
-    loggerJavaRestAssuredVersion = '5.2.4'
-    webdrivermanagerVersion = '5.6.2'
-    selenuimJupiterVersion = '5.0.0'
-}
+def lombokVersion = '1.18.30'
+def slf4jVersion = '1.7.36'
+def logbackClassicVersion = '1.4.11'
+def assertjCoreVersion = '3.24.2'
+def jacksonVersion = '2.15.2'
+def loggerJavaLogbackVersion = '5.1.6'
+def commonCodecVersion = '1.16.0'
+def seleniumJavaVersion = '4.15.0'
+def cucumberVersion = '7.14.0'
+def agentJavaCucumberVersion = '5.2.0'
+def agentJavaJUnit5Version = '5.1.10'
+def junitPlatformSuiteVersion = '1.10.0'
+def cucumberJunitPlatformEngineVersion = '7.13.0'
+def junitJupiterApiVersion = '5.9.2'
+def cucumberGuiceVersion = '7.14.0'
+def guiceVersion = '7.0.0'
+def restAssuredVersion = '5.3.2'
+def loggerJavaRestAssuredVersion = '5.2.4'
+def webdrivermanagerVersion = '5.6.2'
+def awaitilityVersion = "4.2.0"
 
 dependencies {
-    implementation "io.cucumber:cucumber-java:$cucumberVersion"
-    testImplementation "io.cucumber:cucumber-java:$cucumberVersion"
-    testImplementation "io.cucumber:cucumber-junit-platform-engine:$cucumberJunitPlatformEngine"
-    testImplementation "io.cucumber:cucumber-guice:$cucumberGuiceVersion"
-    testImplementation "org.junit.platform:junit-platform-suite:$junitPlatformSuite"
-    testImplementation "org.junit.platform:junit-platform-suite-engine:$junitPlatformSuite"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterApi"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitJupiterApi"
-    implementation "org.projectlombok:lombok:$lombokVersion"
-    testImplementation "org.projectlombok:lombok:$lombokVersion"
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    implementation "com.epam.reportportal:agent-java-junit5:$agentJavaJUnit5Version"
-    implementation "com.epam.reportportal:agent-java-cucumber6:$agentJavaCucumberVersion"
-    implementation "com.epam.reportportal:logger-java-logback:$loggerJavaLogbackVersion"
-    implementation "com.epam.reportportal:logger-java-rest-assured:$loggerJavaRestAssuredVersion"
-    implementation "commons-codec:commons-codec:$commonCodecVersion"
-    implementation "org.slf4j:slf4j-api:$slf4jVersion"
-    implementation "io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion"
-    implementation "io.github.bonigarcia:selenium-jupiter:$selenuimJupiterVersion"
-    implementation "org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
-    testImplementation "org.assertj:assertj-core:$assertjCoreVersion"
-    testImplementation "com.google.inject:guice:$guiceVersion"
-    implementation "io.rest-assured:rest-assured:$restAssuredVersion"
-    testImplementation 'org.awaitility:awaitility:4.2.0'
+    implementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberJunitPlatformEngineVersion}"
+    testImplementation "io.cucumber:cucumber-guice:${cucumberGuiceVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite:${junitPlatformSuiteVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite-engine:${junitPlatformSuiteVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterApiVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterApiVersion}"
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    testImplementation "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    implementation "com.epam.reportportal:agent-java-junit5:${agentJavaJUnit5Version}"
+    implementation "com.epam.reportportal:agent-java-cucumber6:${agentJavaCucumberVersion}"
+    implementation "com.epam.reportportal:logger-java-logback:${loggerJavaLogbackVersion}"
+    implementation "com.epam.reportportal:logger-java-rest-assured:${loggerJavaRestAssuredVersion}"
+    implementation "commons-codec:commons-codec:${commonCodecVersion}"
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumJavaVersion}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+    testImplementation "org.assertj:assertj-core:${assertjCoreVersion}"
+    testImplementation "com.google.inject:guice:${guiceVersion}"
+    implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    testImplementation "org.awaitility:awaitility:${awaitilityVersion}"
+    testImplementation "ch.qos.logback:logback-classic:${logbackClassicVersion}"
 }
 
 tasks.withType(Checkstyle).configureEach {

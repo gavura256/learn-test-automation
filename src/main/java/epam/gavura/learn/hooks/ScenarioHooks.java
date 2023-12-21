@@ -37,9 +37,8 @@ public class ScenarioHooks {
             String name = scenario.getName();
             saveScreenshot(name);
             sendScreenShotToReportPortal(name, screenshot);
-
-            WebDriverSingleton.quit();
         }
+        WebDriverSingleton.quit();
     }
 
     private static void saveScreenshot(String scenarioName) {
@@ -49,7 +48,7 @@ public class ScenarioHooks {
             Files.createDirectories(folderPath);
             String filePath = folderPath.resolve(scenarioName + "_" + RandomStringUtils.randomNumeric(5) + ".png").toString();
             Files.move(screenshotFile.toPath(), Paths.get(filePath));
-            log.info("Screenshot saved: " + filePath);
+            log.info("Screenshot saved: " + getClickablePath(filePath));
         } catch (IOException e) {
             log.info("Error while saving screenshot: " + e.getMessage());
         }
@@ -57,5 +56,13 @@ public class ScenarioHooks {
 
     private static void sendScreenShotToReportPortal(String name, File screenshot) {
         ReportPortal.emitLog(name, LogLevel.INFO.name(), new Date(), screenshot);
+    }
+
+    private static String getClickablePath(String filePath) {
+        // ANSI escape code for hyperlinks
+        String ansiHyperlink = "\u001B]8;;%s\u0007%s\u001B]8;;\u0007";
+
+        // Format the hyperlink with the file path
+        return String.format(ansiHyperlink, "file://" + filePath, filePath);
     }
 }
